@@ -49,7 +49,9 @@ npm run dev
 - [x] 正则表达式测试
 - [x] 文本对比
 - [x] 图片压缩
-- [x] Excel 导入导出导出
+- [x] Excel 导入导出
+- [x] Linux 命令速查
+- [x] Windows 命令速查
 
 ## 技术栈
 

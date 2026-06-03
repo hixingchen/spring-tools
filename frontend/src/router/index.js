@@ -41,6 +41,16 @@ const routes = [
     path: '/excel-tool',
     name: 'ExcelTool',
     component: () => import('../views/ExcelTool.vue')
+  },
+  {
+    path: '/linux-commands',
+    name: 'LinuxCommands',
+    component: () => import('../views/LinuxCommands.vue')
+  },
+  {
+    path: '/windows-commands',
+    name: 'WindowsCommands',
+    component: () => import('../views/WindowsCommands.vue')
   }
 ]
 

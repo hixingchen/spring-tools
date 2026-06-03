@@ -1,7 +1,8 @@
 <template>
   <div class="base64-tool">
-    <h2>Base64 编解码</h2>
-    <el-row :gutter="16">
+    <PageHeader :icon="Document" title="Base64 编解码" description="编码与解码 Base64 字符串" />
+
+    <el-row :gutter="16" class="main-content">
       <el-col :span="12">
         <div class="panel-label">输入</div>
         <el-input
@@ -36,6 +37,8 @@
 <script setup>
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
+import { Document } from '@element-plus/icons-vue'
+import PageHeader from '@/components/PageHeader.vue'
 
 const input = ref('')
 const output = ref('')
@@ -81,16 +84,34 @@ function clearAll() {
 
 <style scoped>
 .base64-tool {
-  padding: 20px;
+  min-height: 100vh;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  padding: 24px 40px;
+  flex: 1;
 }
 
 .panel-label {
   margin-bottom: 8px;
   font-weight: 500;
-  color: #606266;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .actions {
   margin-top: 12px;
+}
+
+:deep(.el-textarea__inner) {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+:deep(.el-textarea__inner:focus) {
+  border-color: #409eff;
 }
 </style>

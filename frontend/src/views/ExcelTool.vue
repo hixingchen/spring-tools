@@ -45,18 +45,18 @@
 <script setup>
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { downloadFile } from '../api/index.js'
+import { exportExcel as doExport, downloadTemplate as doDownload } from '@/api/index.js'
 
 const importResult = ref(null)
 
 function exportExcel() {
-  downloadFile('/api/excel/export').catch(() => {
+  doExport().catch(() => {
     ElMessage.error('导出失败')
   })
 }
 
 function downloadTemplate() {
-  downloadFile('/api/excel/template').catch(() => {
+  doDownload().catch(() => {
     ElMessage.error('下载模板失败')
   })
 }
@@ -93,17 +93,35 @@ function handleImportError() {
 
 <style scoped>
 .excel-tool {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0c0c1d 0%, #1a1a3e 50%, #0c0c1d 100%);
   padding: 20px;
+  color: #fff;
 }
 
-h4 {
+h2, h3, h4 {
+  color: #fff;
   margin: 0 0 8px;
+}
+
+p, span {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 p {
   margin: 0 0 16px;
-  color: #909399;
   font-size: 14px;
+}
+
+:deep(.el-card) {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+:deep(.el-card__header) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .import-result {

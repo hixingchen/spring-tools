@@ -11,55 +11,110 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.springtools</groupId>
-    <artifactId>spring-tools-backend</artifactId>
+    <groupId>com.craft</groupId>
+    <artifactId>craft</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-tools-backend</name>
+    <packaging>pom</packaging>
+    <name>craft</name>
+    <description>工具集合站</description>
+
+    <modules>
+        <module>craft-common</module>
+        <module>craft-excel</module>
+        <module>craft-system</module>
+        <module>craft-tool</module>
+        <module>craft-user</module>
+        <module>craft-admin</module>
+    </modules>
 
     <properties>
         <java.version>17</java.version>
+        <craft.version>0.0.1-SNAPSHOT</craft.version>
+        <mybatis-plus.version>3.5.5</mybatis-plus.version>
+        <sa-token.version>1.37.0</sa-token.version>
+        <knife4j.version>4.5.0</knife4j.version>
+        <easyexcel.version>3.3.4</easyexcel.version>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- 内部模块版本管理 -->
+            <dependency>
+                <groupId>com.craft</groupId>
+                <artifactId>craft-common</artifactId>
+                <version>${craft.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.craft</groupId>
+                <artifactId>craft-excel</artifactId>
+                <version>${craft.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.craft</groupId>
+                <artifactId>craft-system</artifactId>
+                <version>${craft.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.craft</groupId>
+                <artifactId>craft-tool</artifactId>
+                <version>${craft.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.craft</groupId>
+                <artifactId>craft-user</artifactId>
+                <version>${craft.version}</version>
+            </dependency>
+
+            <!-- 第三方依赖版本管理 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot3-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 所有子模块共享的依赖 -->
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>easyexcel</artifactId>
-            <version>3.3.4</version>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <repositories>

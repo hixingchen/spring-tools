@@ -1,7 +1,8 @@
 <template>
   <div class="image-compressor">
-    <h2>图片压缩工具</h2>
+    <PageHeader :icon="Picture" title="图片压缩工具" description="压缩图片体积，支持多种格式" />
 
+    <div class="main-content">
     <!-- Upload Area -->
     <el-upload
       v-if="!originalSrc"
@@ -84,12 +85,15 @@
         <el-button type="success" size="large" @click="download">下载压缩图片</el-button>
       </div>
     </template>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
 import { ElMessage } from 'element-plus'
+import { Picture } from '@element-plus/icons-vue'
+import PageHeader from '@/components/PageHeader.vue'
 
 const originalSrc = ref('')
 const compressedSrc = ref('')
@@ -194,13 +198,46 @@ function reset() {
 
 <style scoped>
 .image-compressor {
-  padding: 20px;
+  min-height: 100vh;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+}
+
+p, span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.main-content {
+  padding: 24px 40px;
+  flex: 1;
 }
 
 .upload-area {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+:deep(.el-upload-dragger) {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+:deep(.el-upload-dragger:hover) {
+  border-color: #409eff;
+}
+
+:deep(.el-upload__text) {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+:deep(.el-upload__text em) {
+  color: #409eff;
+}
+
+:deep(.el-upload__tip) {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .compress-controls {
@@ -221,6 +258,7 @@ function reset() {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #fff;
 }
 
 .image-wrapper {
@@ -240,5 +278,28 @@ function reset() {
 
 .download-area {
   text-align: center;
+}
+
+:deep(.el-card) {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+:deep(.el-card__header) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+:deep(.el-radio__label) {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+:deep(.el-slider__runway) {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+:deep(.el-empty__description p) {
+  color: rgba(255, 255, 255, 0.5);
 }
 </style>

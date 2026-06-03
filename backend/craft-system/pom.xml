@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.craft</groupId>
+        <artifactId>craft</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>craft-system</artifactId>
+    <name>craft-system</name>
+    <description>系统管理模块 - 健康检查、系统配置</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.craft</groupId>
+            <artifactId>craft-common</artifactId>
+        </dependency>
+    </dependencies>
+</project>

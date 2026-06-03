@@ -1,7 +1,8 @@
 <template>
   <div class="regex-tester">
-    <h2>正则表达式测试</h2>
+    <PageHeader :icon="Search" title="正则表达式测试" description="在线测试和调试正则表达式" />
 
+    <div class="main-content">
     <!-- Quick patterns -->
     <div class="quick-patterns">
       <span class="label">常用正则：</span>
@@ -61,11 +62,14 @@
         <el-table-column prop="length" label="长度" width="80" />
       </el-table>
     </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
+import { Search } from '@element-plus/icons-vue'
+import PageHeader from '@/components/PageHeader.vue'
 
 const quickPatterns = [
   { name: '邮箱', pattern: '[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}' },
@@ -152,7 +156,19 @@ function applyPattern(item) {
 
 <style scoped>
 .regex-tester {
-  padding: 20px;
+  min-height: 100vh;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+}
+
+p, span {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.main-content {
+  padding: 24px 40px;
+  flex: 1;
 }
 
 .quick-patterns {
@@ -165,7 +181,7 @@ function applyPattern(item) {
 
 .quick-patterns .label {
   font-weight: 500;
-  color: #606266;
+  color: rgba(255, 255, 255, 0.8);
   flex-shrink: 0;
 }
 
@@ -180,14 +196,15 @@ function applyPattern(item) {
 .panel-label {
   margin-bottom: 8px;
   font-weight: 500;
-  color: #606266;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .error-msg {
   margin-bottom: 12px;
   padding: 8px 12px;
-  background: #fef0f0;
+  background: rgba(245, 108, 108, 0.15);
   color: #f56c6c;
+  border: 1px solid rgba(245, 108, 108, 0.3);
   border-radius: 4px;
   font-size: 13px;
 }
@@ -196,28 +213,76 @@ function applyPattern(item) {
   height: 100%;
   min-height: 336px;
   padding: 12px;
-  border: 1px solid var(--el-border-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  background: #fafafa;
+  background: rgba(255, 255, 255, 0.05);
   white-space: pre-wrap;
   word-break: break-all;
   font-size: 14px;
   line-height: 1.6;
   overflow: auto;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .preview-box :deep(mark) {
-  background: #fadb14;
-  color: #333;
+  background: rgba(250, 219, 20, 0.3);
+  color: #fadb14;
   padding: 1px 2px;
   border-radius: 2px;
 }
 
 .preview-box :deep(.placeholder) {
-  color: #c0c4cc;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .match-section {
   margin-top: 16px;
+}
+
+:deep(.el-input__inner) {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+:deep(.el-input__inner:focus) {
+  border-color: #409eff;
+}
+
+:deep(.el-textarea__inner) {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+:deep(.el-textarea__inner:focus) {
+  border-color: #409eff;
+}
+
+:deep(.el-checkbox__label) {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+:deep(.el-table) {
+  background: transparent;
+  color: #fff;
+}
+
+:deep(.el-table th) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:deep(.el-table td) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:deep(.el-table tr) {
+  background: transparent;
+}
+
+:deep(.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell) {
+  background: rgba(255, 255, 255, 0.03);
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
   <div class="text-diff">
-    <h2>文本对比</h2>
+    <PageHeader :icon="Notebook" title="文本对比" description="逐行对比两段文本的差异" />
+
+    <div class="main-content">
     <el-row :gutter="16">
       <el-col :span="12">
         <div class="panel-label">原始文本</div>
@@ -43,12 +45,15 @@
         </div>
       </div>
     </template>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from 'vue'
 import { ElMessage } from 'element-plus'
+import { Notebook } from '@element-plus/icons-vue'
+import PageHeader from '@/components/PageHeader.vue'
 
 const leftText = ref('')
 const rightText = ref('')
@@ -147,13 +152,21 @@ function clear() {
 
 <style scoped>
 .text-diff {
-  padding: 20px;
+  min-height: 100vh;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  padding: 24px 40px;
+  flex: 1;
 }
 
 .panel-label {
   margin-bottom: 8px;
   font-weight: 500;
-  color: #606266;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .actions {
@@ -167,8 +180,18 @@ function clear() {
   gap: 8px;
 }
 
+:deep(.el-textarea__inner) {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+:deep(.el-textarea__inner:focus) {
+  border-color: #409eff;
+}
+
 .diff-output {
-  border: 1px solid #e4e7ed;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 13px;
@@ -184,22 +207,24 @@ function clear() {
 }
 
 .diff-line.same {
-  background-color: #f5f7fa;
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .diff-line.added {
-  background-color: #e1f3d8;
+  background-color: rgba(103, 194, 58, 0.2);
+  color: #67c23a;
 }
 
 .diff-line.removed {
-  background-color: #fde2e2;
+  background-color: rgba(245, 108, 108, 0.2);
+  color: #f56c6c;
 }
 
 .line-num {
   display: inline-block;
   width: 36px;
   text-align: right;
-  color: #a8abb2;
+  color: rgba(255, 255, 255, 0.4);
   user-select: none;
   flex-shrink: 0;
   margin-right: 8px;
@@ -209,11 +234,12 @@ function clear() {
   display: inline-block;
   width: 16px;
   flex-shrink: 0;
-  color: #909399;
+  color: rgba(255, 255, 255, 0.5);
   user-select: none;
 }
 
 .line-content {
   flex: 1;
+  color: rgba(255, 255, 255, 0.85);
 }
 </style>

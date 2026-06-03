@@ -27,3 +27,4 @@ node_modules
 .idea
 target
 *.iml
+package-lock.json

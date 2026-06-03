@@ -1,6 +1,6 @@
 <template>
   <div class="timestamp-converter">
-    <h2>时间戳转换</h2>
+    <PageHeader :icon="Timer" title="时间戳转换" description="时间戳与日期格式互相转换" />
 
     <!-- 当前时间戳实时显示 -->
     <el-card shadow="never" class="section">
@@ -111,6 +111,8 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { ElMessage } from 'element-plus'
+import { Timer } from '@element-plus/icons-vue'
+import PageHeader from '@/components/PageHeader.vue'
 
 // 当前时间戳
 const now = ref(Date.now())
@@ -183,21 +185,25 @@ function copyText(text) {
 
 <style scoped>
 .timestamp-converter {
-  padding: 20px;
+  min-height: 100vh;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
 }
 
 .section {
-  margin-bottom: 16px;
+  margin: 0 40px 16px;
 }
 
 .card-header {
   font-weight: 500;
+  color: #fff;
 }
 
 .label {
   margin-bottom: 4px;
   font-size: 13px;
-  color: #909399;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .current-ts {
@@ -209,13 +215,14 @@ function copyText(text) {
 .ts-value {
   font-size: 20px;
   font-family: monospace;
-  color: #303133;
+  color: #409eff;
   font-weight: 600;
+  text-shadow: 0 0 10px rgba(64, 158, 255, 0.3);
 }
 
 .current-datetime {
   font-size: 13px;
-  color: #606266;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .result-row {
@@ -226,7 +233,35 @@ function copyText(text) {
 
 .result-label {
   font-size: 13px;
-  color: #606266;
+  color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
+}
+
+:deep(.el-card) {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+:deep(.el-card__header) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+:deep(.el-input__inner) {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+:deep(.el-input__inner:focus) {
+  border-color: #409eff;
+}
+
+:deep(.el-input-group__prepend),
+:deep(.el-input-group__append) {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
 }
 </style>
