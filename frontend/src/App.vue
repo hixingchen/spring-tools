@@ -2,7 +2,8 @@
   <el-container class="app-container">
     <el-aside :width="isCollapse ? '64px' : '220px'" class="aside">
       <div class="logo">
-        <span v-show="!isCollapse" class="logo-text">工具箱</span>
+        <el-icon class="logo-icon"><Box /></el-icon>
+        <span v-show="!isCollapse" class="logo-text">百宝箱</span>
       </div>
 
       <el-menu
@@ -38,7 +39,7 @@ import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   HomeFilled, Document, Key, Clock, DocumentCopy,
-  Picture, Search, Files, Monitor, Platform, Fold, Expand
+  Picture, Search, Files, Monitor, Platform, Fold, Expand, Box
 } from '@element-plus/icons-vue'
 
 const route = useRoute()
@@ -96,6 +97,12 @@ body {
   font-size: 18px;
   font-weight: 600;
   white-space: nowrap;
+}
+
+.logo-icon {
+  color: #409eff;
+  font-size: 22px;
+  margin-right: 8px;
 }
 
 .side-menu {

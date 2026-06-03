@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: ${app.profiles.active:dev}
   web:
     cors:
       allowed-origins: "*"
